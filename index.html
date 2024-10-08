@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>AnFlo - a tool to detect anomalous information flows in Android apps</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detecting Anomalous Sensitive Information Flows in Android Apps">
+    <meta name="author" content="3rd Wave Media">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'> 
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <!-- github acitivity css -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
+    <link rel="stylesheet" href="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.css">
+    
+    <!-- Theme CSS -->  
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="styles/default.css">
+    <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+</head> 
+
+<body>
+    <!-- ******HEADER****** --> 
+    <header class="header">
+        <div class="container">                       
+            <div class="profile-content pull-left">
+                <h1 class="name">AnFlo</h1>
+                <h2 class="desc">Detecting Anomalous Sensitive Information Flows in Android Apps</h2>                   
+            </div><!--//profile-->                          
+        </div><!--//container-->
+    </header><!--//header-->
+    
+    <div class="container sections-wrapper">
+        <div class="row">
+            <div class="primary col-md-8 col-sm-12 col-xs-12">
+                <section class="about section">
+                    <div class="section-inner">
+                        <h2 class="heading">Summary</h2>
+                        <div class="content">
+                         
+                        <p>Smart phone apps are often critical from a security point of view because they usually have access to sensitive user data (e.g., contacts, position, heart rate, account credentials) and they might share such data to the external world through the Internet or with other apps.</p>
+                        <p>Confidentiality of user data can be breached when there are anomalies in the way sensitive data is handled by an app, which may be vulnerable or malicious. Existing approaches that detect anomalous sensitive information flows have limitations in terms of precision because the definition of anomalous flows may differ for different apps with different functionalities. It is normal for “Health” apps to share heart rate information through the Internet but is anomalous for “Travel” apps.</p>
+
+                        <p>In this work, we propose a novel approach to detect anomalies in the flows of sensitive data in Android apps, with better precision. To achieve this objective, we first group trusted apps according to their topics inferred from their functional descriptions. We then learn sensitive information flows with respect to each group of trusted apps. For each app under analysis, anomalies are identified by compar- ing sensitive information flows in the app against those flows learnt on trusted apps grouped under the same topic.</p>
+                        <p> In the evaluation, information flows are learnt on 11,796 trusted apps. We then checked for anomalies in 596 new (benign) apps and identified 2 apps that contain vulnerabilities re- lated to anomalous flows. We also analyzed 12 malware apps and found anomalies in 6 of them.</p>
+                         
+                        </div><!--//content-->
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+    
+               <section class="latest section" >
+                    <div class="section-inner" style="padding-bottom: 0;">
+                        <h2 class="heading">Demo video</h2>
+                        <div class="content">    
+                                               
+                            <div class="item featured text-center">     
+                                <div class="desc text-left">                                    
+                                <p>The following video demo shows when everything is put together, it can be used to have a service that, given an Android app package name, determines if the app behaves the same way as apps in the same category or apps with similar functionality. </p>
+                                <p>On the video, we test 3 apps. The first app (com.whatsapp) passes the anomality check.</p>
+                                <p>While the second app (a repackaged app)is shown to have several anomalous flow compared to the same category apps.</p> 
+                                <p>The third app (<a class="more-link" href="https://play.google.com/store/apps/details?id=bnb.MentalArithmetic.training"></i>mental arithmetic training - B</a> ) instead is 0-day as it was accidentally found while testing the prototype web service on random Google Play apps. Checking with other security analysis tool shows that the app has a suspeicious behavior. <a class="more-link" href="https://www.virustotal.com/#/file/63199b3733cdd226f4333bfd5b84759190dad0de0ca2e0cab50fd0774ffb54d3/detection"></i>VirusTotal scan result</a> shows 1/59 detection. We have reported the result.</p>
+                                </div><!--//desc-->                             
+                                <div class="featured-image">                                   
+                                    <img class="img-responsive project-image" src="demo.gif" alt="demo vid" width="100%" />
+                                    
+                                    <div class="ribbon">
+                                        <div class="text">Demo</div>
+                                    </div>
+                                </div>               
+                            </div><!--//item-->
+                            <hr class="divider" />                            
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+                
+                <section class="projects section">
+                    <div class="section-inner">
+                        <h2 class="heading">Prototype components</h2>
+                        <div class="content">
+                            <div class="item">
+                                <h3 class="title">Static taint analysis</h3>
+                                <p class="summary">AnFlo relies on IccTA for static taint analysis. We have, however, modified the output of source-sink and paths which is easier for us to parse for later analysis.</p>
+                                <p>In order to properly run IccTA, the required dependences should be satisfied (for example Ic3 and SQL server). For more information on IccTA specific configuration, consult the link blow.</p>
+                                <p><a class="more-link" href="https://github.com/lilicoding/soot-infoflow-android-iccta" target="_blank"><i class="fa fa-external-link"></i> The original IccTA can be found here</a></p>
+                            </div><!--//item-->
+                            <div class="item">
+                                <h3 class="title">R scripts</h3>
+                                <p class="summary">Once static taint analysis results are ready, we use several R scripts to create the models and do classification.</p>                                
+                            </div><!--//item-->
+                           
+                            
+                            <a class="btn btn-cta-primary btn-download" href="anflo_tool.zip" target="_blank"><i class="fa fa-download"></i>Download tool</a>
+                            
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->
+                
+                <section class="experience section">
+                    <div class="section-inner">
+                        <h2 class="heading">Usage</h2>
+                        <div class="content">
+                            <div class="item">
+                                <h3 class="title">Prerequisites for classification</h3>
+                                <p>In order to be able to classify apps, we need to first have a training data. Our training data consisits of 10K+ top Google Play apps. If you are also interested to do the classification based on topics, you need to perform the topic classification for the training apps.</p>
+                                <p>However, if you just want to do the classification based on Google Play category, then you need to have category information of each tranining app.</p>
+                                <p>If you don't want category either, then you have the option to use the entire training apps to classifiy app under test. But as a starting point, you can use the dataset that we used for this work here.</p>
+
+                                <a class="btn btn-cta-primary btn-download" href="anflow_dataset" target="_blank"><i class="fa fa-download"></i>Download dataset</a>
+                            </div><!--//item-->
+
+                            <div class="item">
+                                <h3 class="title">Static taint analysis</h3>
+                                <p>Run the following script passing the path to the APK 
+                                <pre><code>./run_analysis.sh ${APK}</code></pre>
+                                This will produce the source-sink pairs and the corresponding paths in the app. It then generates the permission pairs from the source-sink pairs (i.e., API1-API2 => PERM1-PERM2). Once this result is ready, based on your preferred model, you can use the R script to classify the app under test.
+                                </p>                                
+                            </div><!--//item-->
+                            
+                            <div class="item">
+                                <h3 class="title">Using the R classification scripts</h3>
+                                <p>Once you have the required data, open the R script for the preferred model and import the dataset and run the script. The script generates a table of <i>anomalous</i> apps with the anomalous flow ID.</p>
+                                <p>
+                                <pre><code class="R"># a CSV containing App, PermPairID for training apps
+AppPermPairModel = read.csv("AppPermPairModel.csv")
+# a CSV containing "App, PermPairID" for test apps
+AppPermPairTest = read.csv("AppPermPairTest.csv")
+# a CSV containing "App, Topic, Probability"
+DominantTopics = read.csv("DominantTopics.csv")
+# a CSV containing PermPairID mapping to SourcePerm-SinkPemr pair
+PermPairMap = read.csv("PermPairMap.csv")
+# repackaged apps topics
+MalwareTopics = read.csv("MalwareTopics.csv")
+# topics for FDroid apps that are also on Google Play
+TopicsFDroid = read.csv("TopicsFDroid.csv")
+# manually assigned general topics for the 30 topics classified by Mallet
+GeneralTopics = read.csv("GeneralTopics.csv")
+# CSV containing "APP, CATEGORY" for training apps (for Goole Play category based classification)
+googleplay_app_new_cat = read.csv("googleplay_cats_model.csv")
+# CSV containing "APP, CATEGORY" for FDroid apps (for Goole Play category based classification)
+fdroid_cats_test = read.csv("fdroid_app_old_cat.csv")</code></pre></p>
+                            </div><!--//item-->
+                            
+                        </div><!--//content-->  
+                    </div><!--//section-inner-->                 
+                </section><!--//section-->               
+            </div><!--//primary-->   
+        </div><!--//row-->
+    </div><!--//masonry-->
+    
+    <!-- ******FOOTER****** --> 
+    <footer class="footer">
+        <div class="container text-center">
+                <small class="copyright">Based on design by 3rd Wave Media</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+ 
+    <!-- Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-rss/dist/jquery.rss.min.js"></script> 
+    <!-- github activity plugin -->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="http://caseyscarborough.github.io/github-activity/github-activity-0.1.0.min.js"></script>
+    <!-- custom js -->
+    <script type="text/javascript" src="assets/js/main.js"></script>    
+</body>
+</html> 
+
